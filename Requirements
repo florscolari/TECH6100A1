@@ -1,0 +1,48 @@
+## Must have
+- welcome message
+- Menu with options to run each task
+- Exit the program
+- Running the program until user’s decision of leaving the program
+- Input validation for clean data
+
+
+## Task 1
+Task 1: This function should receive a variable number of positional arguments,
+which are numeric values. It should calculate and return the mean, median, and
+standard deviation of the given values.
+
+- welcome message for task 1
+- Ask for how many numbers the user wants to input
+- Run a loop for each of those X qty of numbers, it’ll collect each input and validate that’s a number (Int, float or any other number data type)
+- Display invalid input and ask for correction
+- Collect arguments in a temporary list
+- Perform calculations over that list
+- Present summary after taking all the numbers (arguments)
+”you have entered this serie of numbers: []
+Display results below”
+
+Back to menu or repeat task
+
+## Task 2
+Merge dictionaries into a dictionary
+- how many dictionaries would you like to merge?
+- As for user’s input. Integer number
+- Validate a proper input
+- Iterate X user has entered
+- for each dictionary iteration ask how many key-pair values would like to have for this dictionary?
+- User’s input about it
+- For each key-value pair iteration ask a value for key and a value for value
+- IMPORTANT
+must check that the key is not repeated. If the key is the same as an existing key input before, a message informing the user should appear and asking to fix its last value
+
+Then iterates again for the second dictionary and so on…
+
+Temporarily store those dictionaries into a list or dictionary, then pass that in the form of keyword arguments to perform the merge through the function
+
+After all X iterations are done
+
+Display the output in same format as before: this is what you have input, this is the result
+
+## Task 3
+
+
