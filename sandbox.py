@@ -1,35 +1,37 @@
-# TECH6100 Assessment 1 Florencia Scolari ID 1847863 Apr 2025
-def calculate_statistics(*numbers):
-    if len(numbers) > 0:
-        """To get the MEAN"""
-        mean = sum(numbers) / len(numbers) #average value
+### Task 2
+def create_dictionary(pairs):
+    temp = {}
+    i = 0
+    while i != pairs:
+        print(f"Values for key:value pair {i + 1}: ")
+        key = input("Key: ")
+        value = input("Value: ")
+        temp[key] = value
+        i += 1
+    print(f"You have created a dictionary with {i} pairs: {temp}")
 
-        """To get the MEDIAN"""
-        median = sorted(numbers)
-        """Calculate Median for 2 cases: list is odd or list is even"""
-        m = len(numbers) // 2  # m is the middle point. '//' is floor division, rounded to min closest digit
-        if len(numbers) % 2 != 0:  # reminder not equal to 0 = ODD
-            median = numbers[m]
-        elif len(numbers) % 2 == 0:  # reminder equals to 0 = EVEN
-            median = (numbers[m - 1] + numbers[m]) / 2  # Calculating median for even numbers
 
-        """To get the POPULATION STANDARD DEVIATION"""
-        temp = []
-        for item in numbers:
-            item = (item - mean) #2. Subtract the mean from each data point.
-            item = item * item #3. Square each deviation to make it positive.
-            temp.append(item) # Hold all squared deviations together (list)
-        total = 0
-        for num in temp:
-            total += num #4. Sum of all squared deviations together
-        variance = total / len(numbers) #5. Divide the sum by the number of data points (called Variance)
-        deviation = variance**0.5 #6. Get the square root of the variance (called population std deviation)
-
-        return float(mean), float(median), round(deviation,3)
+while True:
+    try:
+        create_dictionary(int(input("Enter how many key:value pairs for this dictionary (e.g. 3): ")))
+    except ValueError as e:
+        print(f"{e}. Please enter a number")
+    #todo: exception for number 0
     else:
-        return None
+        break
 
-test5 = calculate_statistics(1, 2, 3, 4, 5)
+print('-'*20)
+
+def print_shopping_list(*items, **prices):
+    for item in items:
+        print(f"{item}: ${prices.get(item, 'N/A')}")
+
+print_shopping_list('Apple', 'Banana', 'Orange', Apple=1.99, Orange=2.49)
+
+thisdict = dict(name = "John", age = 36, country = "Norway")
+
+print(thisdict)
 
 
-print('Testing deviation: ', test5)
+
+
