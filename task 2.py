@@ -38,7 +38,6 @@ def merge_dictionaries(**kwargs):
 
     print(f"{'-'*10}\nYou have merged {len(kwargs.items())} dictionaries into 1.\nThe result has {len(result_dict.items())} key-value pairs.\n{result_dict}")
 
-
 def valid_number_of_dict():
     """Checks that a valid number of dict (must be higher than 1) is input by the user to pass as the nums for create_dictionaries()."""
     while True:
