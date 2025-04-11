@@ -1,13 +1,16 @@
 ### Task 2 Pseudocode Guidance
 def create_dictionaries(number_of_dict):
+    """Creates number of dictionaries based on user's input with empty values as placeholders"""
     n = 0
     while n != number_of_dict:
         parent_key = input(f"Enter the Key for dictionary #{n+1}: ")
         parent_value = {}
         parent_keys_qty[parent_key] = parent_value
         n += 1
+    return parent_keys_qty
 
 def merge_dictionaries(**kwargs):
+    """Adds key-value pairs to the number of dictionaries created by create_dictionaries() and merges them into 1."""
     result_dict = {}
     for dict_name, dict_value in kwargs.items():
         print(f"{'-'*10}\nLet's work now on dictionary with key: {dict_name}")
