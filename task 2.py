@@ -1,7 +1,9 @@
+#todo: add program menu
 def main_menu():
+    """Start the program with options available for users"""
     print("list of options from main menu")
 
-### Task 2 Pseudocode Guidance
+### Task 2 with Pseudocode Guidance
 def create_dictionaries(number_of_dict):
     """Creates number of dictionaries based on user's input with empty values as placeholders"""
     n = 0
@@ -38,6 +40,7 @@ def merge_dictionaries(**kwargs):
 
 
 def valid_number_of_dict():
+    """Checks that a valid number of dict (must be higher than 1) is input by the user to pass as the nums for create_dictionaries()."""
     while True:
         try:
             nums = int(input("Enter the number of dictionaries you would like to merge: "))
