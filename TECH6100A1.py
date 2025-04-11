@@ -47,6 +47,7 @@ def create_dictionaries(number_of_dict):
     """Creates number of dictionaries based on user's input with empty values as placeholders"""
     n = 0
     while n != number_of_dict:
+        #todo: must check the key does not exist
         parent_key = input(f"Enter the Key for dictionary #{n+1}: ")
         parent_value = {}
         parent_keys_qty[parent_key] = parent_value
@@ -68,6 +69,7 @@ def merge_dictionaries(**kwargs):
         i = 0
         while i != number_of_pairs:
             print(f"{'-'*2} Key-value pair #{i+1} {'-'*2}")
+            #todo: must check the key does not exist
             key = input(f"Enter the key: ")
             value = input(f"Enter the value: ")
             dict_value[key] = value
@@ -100,5 +102,6 @@ print('Test 4', test4)
 print(f"\nThis is Task 2")
 nums = valid_number_of_dict()
 parent_keys_qty = {}
+
 create_dictionaries(nums)
 merge_dictionaries(**parent_keys_qty)
