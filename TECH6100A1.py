@@ -9,7 +9,7 @@ menuOptions = {
     3: "Format Strings: Get a string with your values by replacing its placeholders.",
     4: "Exit the program"
 }
-divider = ('-' * 25) # prints a divider to improve readability.
+divider = ('-' * 80) # prints a divider to improve readability.
 
 
 # Task 0.1 Welcome & Get the user's name -
@@ -37,8 +37,11 @@ def main_menu():
         except ValueError as e:
             print(f"{e}. Please enter a number")
 
-## Task 1 values for calculation
+
+## TASK 1 - Calculate statistics
+#### T  1.1 values for calculation
 def value_to_calculate():
+    """Collects user inputs and returns the set of values to pass to calculate_statistics function."""
     list_of_value_to_calculate = []
     print(f"Add each number to the dataset by entering it and press enter. Do this for each of them.\nEnter the word "
           f"Done to close the set.")
@@ -49,16 +52,17 @@ def value_to_calculate():
         else:
             pass
         try:
-            value = int(value_input)
+            value = float(value_input)
             list_of_value_to_calculate.append(value)
         except ValueError:
             print(f"This is not a valid value, please enter a number or done to close the dataset.")
     return list_of_value_to_calculate
 
 
-## TASK 1 - Calculate statistics
+#### T  1.2 - Calculate statistics
 def calculate_statistics(*numbers):
-    """Collects a set of numeric values, calculates and returns mean, median and population standard deviation."""
+    """Calculates the mean, median and population standard deviation of a given set of numbers (positional
+    arguments)."""
     if len(numbers) > 0:
         """To get the MEAN"""
         mean = sum(numbers) / len(numbers)  # average value
@@ -85,18 +89,15 @@ def calculate_statistics(*numbers):
         deviation = variance ** 0.5  # 6. Get the square root of the variance (called population std deviation)
 
         return {
-            'mean': float(mean),
-            'median': float(median),
+            'mean': round(float(mean),2),
+            'median': round(float(median),2),
             'std_dev': round(deviation, 3)
         }
     else:
         message = "No numbers were given."
         return message
 
-numbers = value_to_calculate()
-print(f"You have entered the dataset: {numbers}")
-calculation = calculate_statistics(*numbers)
-print(calculation)
+
 
 ## TASK 2 - Merge dictionaries into a dictionary
 def create_dictionaries(number_of_dict):
@@ -189,11 +190,13 @@ def replace_placeholder_for_values(template, *args):
 ## Task 1 Main Function
 def calculate_statistics_main():
     print(f"\n--- Task 1: Calculate Statistics ---")
-    test3 = calculate_statistics(1, 2, 3, 4, 5)
-    test4 = calculate_statistics(10, 15, 20, 25, 30, 35)
-
-    print('Test 3', test3)
-    print('Test 4', test4)
+    numbers = value_to_calculate()
+    print(divider)
+    print(f"Dataset: {numbers}")
+    calculation = calculate_statistics(*numbers)
+    print(f"Calculation Results:")
+    for keys, values in calculation.items():
+        print(f"{keys.title()}: {values}")
 
 ## Task 2 Main Function
 def merge_dictionaries_main():
