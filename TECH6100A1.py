@@ -1,10 +1,10 @@
 # TECH6100 Assessment 1 Florencia Scolari ID 1847863 Apr 2025
-
+# Check the full project and references on the Public GitHub Repo https://github.com/florscolari/TECH6100A1.git
 
 #### ----- GLOBAL ----- ####
 # Menu options
 menuOptions = {
-    1: "Calculate Statistics: Get the mean, median and Standard Deviation of the given values.",
+    1: "Calculate Statistics: Get the mean, median and Population Standard Deviation of the given values.",
     2: "Merge Dictionaries: Get a single dictionary by merging as many dictionaries as you want.",
     3: "Format Strings: Get a string with your values by replacing its placeholders.",
     4: "Exit the program"
