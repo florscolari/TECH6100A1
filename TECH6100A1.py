@@ -37,6 +37,25 @@ def main_menu():
         except ValueError as e:
             print(f"{e}. Please enter a number")
 
+## Task 1 values for calculation
+def value_to_calculate():
+    list_of_value_to_calculate = []
+    print(f"Add each number to the dataset by entering it and press enter. Do this for each of them.\nEnter the word "
+          f"Done to close the set.")
+    while True:
+        value_input = input(f"Value: ")
+        if value_input.lower() == "done":
+            break
+        else:
+            pass
+        try:
+            value = int(value_input)
+            list_of_value_to_calculate.append(value)
+        except ValueError:
+            print(f"This is not a valid value, please enter a number or done to close the dataset.")
+    return list_of_value_to_calculate
+
+
 ## TASK 1 - Calculate statistics
 def calculate_statistics(*numbers):
     """Collects a set of numeric values, calculates and returns mean, median and population standard deviation."""
@@ -74,7 +93,10 @@ def calculate_statistics(*numbers):
         message = "No numbers were given."
         return message
 
-
+numbers = value_to_calculate()
+print(f"You have entered the dataset: {numbers}")
+calculation = calculate_statistics(*numbers)
+print(calculation)
 
 ## TASK 2 - Merge dictionaries into a dictionary
 def create_dictionaries(number_of_dict):
