@@ -1,0 +1,33 @@
+START
+
+1. LOOP:
+   a. Ask user: "What is your sentence? Use {} as placeholders"
+   b. Store the input in a variable called 'template'
+
+   c. CHECK if:
+      - 'template' contains at least one '{}'
+      - AND 'template' does NOT contain any '{' without a matching '}'
+      - AND 'template' does NOT contain any '}' without a matching '{'
+      - AND 'template' does NOT contain things like '{name}' or '{0}', only '{}'
+
+   d. IF the template is valid:
+      - BREAK the loop and continue
+   e. ELSE:
+      - Show an error message like "Invalid input. Please only use empty curly braces {} as placeholders."
+      - REPEAT the loop
+
+2. Count how many times '{}' appears in 'template'
+   -> Store the number in a variable called 'placeholder_count'
+
+3. Create an empty list called 'values'
+
+4. REPEAT placeholder_count times:
+   a. Ask the user: "Enter value for placeholder [number]"
+   b. Add the value to the 'values' list
+
+5. Replace the placeholders in 'template' with the values from the list
+   -> Use the values in the same order
+
+6. Show the final sentence to the user
+
+END
