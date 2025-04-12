@@ -162,7 +162,6 @@ def merge_dictionaries(**kwargs):
     print(f"{'-'*10}\nYou have merged {len(kwargs.items())} dictionaries into 1.\nThe result has {len(result_dict.items())} key-value pairs.\n{result_dict}")
 
 
-
 ## TASK 3 - Formatting String by Using Placeholders - format_string()
 #### T  3.1 - Checks a valid number of placeholders AND Collects the template text
 def valid_number_of_placeholder():
