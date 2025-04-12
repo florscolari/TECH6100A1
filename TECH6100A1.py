@@ -100,6 +100,20 @@ def calculate_statistics(*numbers):
 
 
 ## TASK 2 - Merge dictionaries into a dictionary
+#### T  2.1 - Checks a valid number of dictionaries will be created (if not then shows error)
+def valid_number_of_dict():
+    """Checks that a valid number of dict (must be higher than 1) is input by the user to pass as the nums for create_dictionaries()."""
+    while True:
+        try:
+            nums = int(input("Enter the number of dictionaries you would like to merge: "))
+            if nums <= 1:
+                print(f"{nums} is not a valid number. Please enter a number higher than 1 to merge dictionaries.")
+                continue
+            return nums
+        except ValueError as e:
+            print(f"{e}. Please enter a number")
+
+#### T  2.2 - Creates N dictionaries with key but empty values
 def create_dictionaries(number_of_dict):
     """Creates number of dictionaries based on user's input with empty values as placeholders"""
     parent_keys_qty = {}
@@ -112,6 +126,7 @@ def create_dictionaries(number_of_dict):
         n += 1
     return parent_keys_qty
 
+#### T  2.3 - Adds N key-pair values to each dictionary AND Merges all dictionaries into 1.
 def merge_dictionaries(**kwargs):
     """Adds key-value pairs to the number of dictionaries created by create_dictionaries() and merges them into 1."""
     result_dict = {}
@@ -137,19 +152,10 @@ def merge_dictionaries(**kwargs):
 
     print(f"{'-'*10}\nYou have merged {len(kwargs.items())} dictionaries into 1.\nThe result has {len(result_dict.items())} key-value pairs.\n{result_dict}")
 
-def valid_number_of_dict():
-    """Checks that a valid number of dict (must be higher than 1) is input by the user to pass as the nums for create_dictionaries()."""
-    while True:
-        try:
-            nums = int(input("Enter the number of dictionaries you would like to merge: "))
-            if nums <= 1:
-                print(f"{nums} is not a valid number. Please enter a number higher than 1 to merge dictionaries.")
-                continue
-            return nums
-        except ValueError as e:
-            print(f"{e}. Please enter a number")
+
 
 ## TASK 3 - Formatting String by Using Placeholders - format_string()
+#### T  3.1 - Checks a valid number of placeholders AND Collects the template text
 def valid_number_of_placeholder():
     """ Collects numbers of placeholders AND template as string in a list. Also:
     Checks that a valid number of placeholders (must be at least 1) is input by the user to pass as
@@ -170,6 +176,7 @@ def valid_number_of_placeholder():
             num = template.count(placeholder) #if passes, counts qty of placeholders. Returns an int
             return [num, template]
 
+#### T  3.2 - Collects as many values as number of placeholders were previously collected.
 def value_for_placeholder(num):
     """Collects the number of values(str type) on a list based on user's input for placeholders. e.g. if 4 placeholders, then collects 4 values"""
     n = 0
@@ -180,6 +187,7 @@ def value_for_placeholder(num):
         n += 1
     return list_of_value
 
+#### T  3.3 - Takes the template text (string) AND Replaces placeholders for values.
 def replace_placeholder_for_values(template, *args):
     """Takes the string with placeholders used as template, replaces the placeholders with variable length of
     positional values through string format method"""
@@ -218,7 +226,7 @@ def format_string_main():
 
 #### ------ Run The Program - User Interface ------ ####
 print("You are just about to access to ADMAS, the Advanced Data Manipulation and Analysis System")
-userName = input("Enter your name to start: ")
+userName = input("Enter your name: ")
 welcome(userName)
 
 while True:
@@ -236,4 +244,4 @@ while True:
     else:
         print("Invalid choice. Please try again.")
 
-## End of the script - 1847863 F. Scolari KBS 2025 TECH6100 Assessment 1
+## End of the script - 1847863 F. Scolari KBS Apr 2025 TECH6100 Assessment 1
