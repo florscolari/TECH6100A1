@@ -1,7 +1,45 @@
 # TECH6100 Assessment 1 Florencia Scolari ID 1847863 Apr 2025
 
+
+#### ----- GLOBAL ----- ####
+# Menu options
+menuOptions = {
+    1: "Calculate Statistics: Get the mean, median and Standard Deviation of the given values.",
+    2: "Merge Dictionaries: Get a single dictionary by merging as many dictionaries as you want.",
+    3: "Format Strings: Get a string with your values by replacing its placeholders.",
+    4: "Exit the program"
+}
+divider = ('-' * 25) # prints a divider to improve readability.
+
+
+# Task 0.1 Welcome & Get the user's name -
+def welcome(user):
+    """To welcome the user when starting the program"""
+    print("-" * 80)
+    print("Welcome to ADMAS,", user.title(),
+          ".\n" """I am Emma, your Data Manipulation Assistant. \nLet's run some analysis Today.""")
+
+
+# Task 0.2 Display the main menu
+def main_menu():
+    """To display the main menu to the user"""
+    print("-" * 80)
+    print("What would you like to do? ")
+    for number, task in menuOptions.items():
+        print("[", number, "] :", task)
+    while True:
+        try:
+            userMenuChoice = int(input("Choose a number: "))
+            if userMenuChoice < 1 or userMenuChoice > 4:  # Checking that is a numeric value within the expected range
+                print("Choose a valid number between 1 and 4 please.")
+                continue
+            return userMenuChoice
+        except ValueError as e:
+            print(f"{e}. Please enter a number")
+
 ## TASK 1 - Calculate statistics
 def calculate_statistics(*numbers):
+    """Collects a set of numeric values, calculates and returns mean, median and population standard deviation."""
     if len(numbers) > 0:
         """To get the MEAN"""
         mean = sum(numbers) / len(numbers)  # average value
@@ -36,15 +74,12 @@ def calculate_statistics(*numbers):
         message = "No numbers were given."
         return message
 
-## TASK 2 - Merge dictionaries into a dictionary
-#todo: add program menu
-def main_menu():
-    """Start the program with options available for users"""
-    print("list of options from main menu")
 
-### Task 2 with Pseudocode Guidance
+
+## TASK 2 - Merge dictionaries into a dictionary
 def create_dictionaries(number_of_dict):
     """Creates number of dictionaries based on user's input with empty values as placeholders"""
+    parent_keys_qty = {}
     n = 0
     while n != number_of_dict:
         #todo: must check the key does not exist
@@ -92,8 +127,6 @@ def valid_number_of_dict():
             print(f"{e}. Please enter a number")
 
 ## TASK 3 - Formatting String by Using Placeholders - format_string()
-divider = ('-' * 25) # prints a divider to improve readability.
-
 def valid_number_of_placeholder():
     """ Collects numbers of placeholders AND template as string in a list. Also:
     Checks that a valid number of placeholders (must be at least 1) is input by the user to pass as
@@ -125,33 +158,57 @@ def value_for_placeholder(num):
     return list_of_value
 
 def replace_placeholder_for_values(template, *args):
+    """Takes the string with placeholders used as template, replaces the placeholders with variable length of
+    positional values through string format method"""
     formatted_text = template.format(*args)
-    return formatted_text.capitalize()
+    return formatted_text
 
 
+## Task 1 Main Function
+def calculate_statistics_main():
+    print(f"\n--- Task 1: Calculate Statistics ---")
+    test3 = calculate_statistics(1, 2, 3, 4, 5)
+    test4 = calculate_statistics(10, 15, 20, 25, 30, 35)
+
+    print('Test 3', test3)
+    print('Test 4', test4)
+
+## Task 2 Main Function
+def merge_dictionaries_main():
+    print(f"\n--- Task 2: Merge Dictionaries ---")
+    nums = valid_number_of_dict()
+    parent_keys_qty = create_dictionaries(nums)
+    merge_dictionaries(**parent_keys_qty)
+
+## Task 3 Main Function
+def format_string_main():
+    print(f"\n--- Task 3: Format a Given String ---")
+    placeholder_count = valid_number_of_placeholder() #Collects number of placeholders (function returns [0] placeholders, [1] template as string)
+    template_text = placeholder_count[1] # This variable stores the template as s string.
+    values = value_for_placeholder(placeholder_count[0]) #This variable stores the list of values (to be used as *args)
+    output = replace_placeholder_for_values(template_text, *values) #passing template text & values to replace placeholder by using format method
+    print(divider)
+    print(f"You have entered:\nTemplate: {template_text}\nValues: {values}\nResult: {output}")
 
 
+#### ------ Run The Program - User Interface ------ ####
+print("You are just about to access to ADMAS, the Advanced Data Manipulation and Analysis System")
+userName = input("Enter your name to start: ")
+welcome(userName)
 
-# ------- Start the Program Here  ------- #
-print(f"\nThis is Task 1. Needs user inputs")
-test3 = calculate_statistics(1, 2, 3, 4, 5)
-test4 = calculate_statistics(10, 15, 20, 25, 30, 35)
+while True:
+    userChoice = main_menu() # The main menu on a loop to run the program
 
-print('Test 3', test3)
-print('Test 4', test4)
+    if userChoice == 1:
+        calculate_statistics_main()
+    elif userChoice == 2:
+        merge_dictionaries_main()
+    elif userChoice == 3:
+        format_string_main()
+    elif userChoice == 4:
+        print("Exiting ADMAS, your ally for data manipulation and analysis. Until next time!")
+        break
+    else:
+        print("Invalid choice. Please try again.")
 
-## Running Program with User Inputs
-print(f"\nThis is Task 2")
-nums = valid_number_of_dict()
-parent_keys_qty = {}
-
-create_dictionaries(nums)
-merge_dictionaries(**parent_keys_qty)
-
-print(f"\nThis is Task 3")
-placeholder_count = valid_number_of_placeholder() #Collects number of placeholders (function returns [0] placeholders, [1] template as string)
-template_text = placeholder_count[1] # This variable stores the template as s string.
-values = value_for_placeholder(placeholder_count[0]) #This variable stores the list of values (to be used as *args)
-output = replace_placeholder_for_values(template_text, *values) #passing template text & values to replace placeholder by using format method
-print(divider)
-print(f"You have entered:\nTemplate: {template_text}\nValues: {values}\nResult: {output}")
+## End of the script - 1847863 F. Scolari KBS 2025 TECH6100 Assessment 1
