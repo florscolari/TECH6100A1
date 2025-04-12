@@ -119,11 +119,15 @@ def create_dictionaries(number_of_dict):
     parent_keys_qty = {}
     n = 0
     while n != number_of_dict:
-        #todo: must check the key does not exist
-        parent_key = input(f"Enter the Key for dictionary #{n+1}: ")
-        parent_value = {}
-        parent_keys_qty[parent_key] = parent_value
-        n += 1
+        while True:
+            parent_value = {}
+            parent_key = input(f"Enter the Key for dictionary #{n+1}: ")
+            if parent_key in parent_keys_qty: #Checking if the key already exists in the dictionary
+                print("This key exists already in the dictionary. Try again")
+            else:
+                parent_keys_qty[parent_key] = parent_value
+                n += 1
+                break
     return parent_keys_qty
 
 #### T  2.3 - Adds N key-pair values to each dictionary AND Merges all dictionaries into 1.
