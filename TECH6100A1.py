@@ -146,13 +146,18 @@ def merge_dictionaries(**kwargs):
         i = 0
         while i != number_of_pairs:
             print(f"{'-'*2} Key-value pair #{i+1} {'-'*2}")
-            #todo: must check the key does not exist
-            key = input(f"Enter the key: ")
-            value = input(f"Enter the value: ")
-            dict_value[key] = value
-            i += 1
-        for key, value in dict_value.items():
-            result_dict[key] = value
+            while True:
+                key = input(f"Enter the key: ")
+                if key in dict_value:  # Checking if the key already exists in the dictionary
+                    print("This key exists already in the dictionary. Try again")
+                elif key in result_dict:
+                    print("This key exists already in another dictionary. Try again")
+                else:
+                    value = input(f"Enter the value: ")
+                    dict_value[key] = value
+                    result_dict[key] = value #to update the resulting merged dictionary along the way and not at the end. If not, I cannot check duplicity in keys
+                    i += 1
+                    break
 
     print(f"{'-'*10}\nYou have merged {len(kwargs.items())} dictionaries into 1.\nThe result has {len(result_dict.items())} key-value pairs.\n{result_dict}")
 
