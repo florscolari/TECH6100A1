@@ -4,8 +4,9 @@
 divider = ('-' * 25) # prints a divider to improve readability.
 
 def valid_number_of_placeholder():
-    """Checks that a valid number of placeholders (must be at least 1) is input by the user to pass as
-    the nums for create_placeholder()."""
+    """ Collects numbers of placeholders AND template as string in a list. Also:
+    Checks that a valid number of placeholders (must be at least 1) is input by the user to pass as
+    the number to collect values for placeholder using function value_for_placeholder()."""
     placeholder = '{}' #valid placeholder structure
     while True:
         template = input("Write a text. Use {} for each placeholder you want to add. e.g. A {} jumps into the {}. ")
@@ -20,7 +21,23 @@ def valid_number_of_placeholder():
             print(divider)
         else:
             num = template.count(placeholder) #if passes, counts qty of placeholders. Returns an int
-            return num
+            return [num, template]
+
+def value_for_placeholder(num):
+    """Collects the number of values(str type) on a list based on user's input for placeholders. e.g. if 4 placeholders, then collects 4 values"""
+    n = 0
+    list_of_value = []
+    while n != num:
+        value = input(f"Enter the value for placeholder #{n+1}: ")
+        list_of_value.append(value)
+        n += 1
+    return list_of_value
+
 ## Running Program with User Inputs
-test = valid_number_of_placeholder()
-print(test)
+placeholder_count = valid_number_of_placeholder() #Collects number of placeholders (function returns [0] placeholders, [1] template as string)
+template = placeholder_count[1] # This variable stores the template as s string.
+print(placeholder_count)
+values = value_for_placeholder(placeholder_count[0]) #This variable stores the list of values (to be used as *args)
+
+print(values)
+print(template)
