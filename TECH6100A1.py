@@ -1,5 +1,6 @@
 # TECH6100 Assessment 1 Florencia Scolari ID 1847863 Apr 2025
 # Check the full project and references on the GitHub Public Repo https://github.com/florscolari/TECH6100A1.git
+# Out of scope: global command to cancel an ongoing task.
 
 #### ----- GLOBAL ----- ####
 # Menu options
